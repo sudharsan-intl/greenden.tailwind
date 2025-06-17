@@ -12,9 +12,11 @@
 
   <div class=" bg-green-100 h-20  font-sans  px-5 items-center flex justify-between shadow-lg sticky top-0  z-10">
 <h1 class= "  text-2xl font-bold cursor-pointer   ">GREENDEN</h1>
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 h-7 md:hidden ">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+<div id="menu" class="cursor-pointer">
+  <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6  h-7   md:hidden ">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5 " />
 </svg>
+</div>
 
 <div class="  flex gap-4 items-center cursor-pointer hidden md:flex ">
        <p class="hover:underline text-gray-600 hover:text-black "><a href="index.html">Home</a></p>
@@ -23,11 +25,41 @@
 
 </div>
 
+
+  </div>
+
+
+<!-- sidenav -->
+<section id="sidenav" class="  bg-green-100 fixed z-20 top-0 transition-all duration-1000" style="width: 50%; height: 100vh; right: -50%;">
+<h1 id="close" class="p-4 m-5 text-right">X</h1>
+<div class=" flex flex-col   gap-4 items-center cursor-pointer  ">
+       <p class="hover:underline text-gray-600 hover:text-black "><a href="index.html">Home</a></p>
+       <p class="hover:underline  text-gray-600 hover:text-black"><a href="prodcut.html">Product</a></p>
+       <p class="hover:underline text-gray-600 hover:text-black"><a href="conatct.html">Contact</a></p>
+
 </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- prodcut -->
 <div>
     <h2 class="font-bold text-2xl m-3 p-4 text-center">Our Products</h2>
- <input type="text" placeholder="search" class="w-80 p-1  ml-20 border border-gray-800 md:w-8/12 md:ml-72" > 
+ <input id="search" type="text" placeholder="search" class="w-80 p-1  ml-20 border border-gray-800 md:w-8/12 md:ml-72" > 
  
  
 
@@ -39,11 +71,11 @@
 
 <!-- img container -->
   <h2 class="text-center font-bold text-2xl">Best Sellers</h2>
-<div class=" grid grid-cols-2 mt-4 md:grid-cols-4 p-5 ">
+<div id="container" class=" grid grid-cols-2 mt-4 md:grid-cols-4 p-5 ">
 
   <div class="m-2 text-center hover:shadow-xl hover:transform hover:translate-y-2">
        <img src="flower 1.jpg" width="250px " height="250px">
-        <h2> plant 1</h2>
+        <h2> lily</h2>
         <p> 5$</p>
 
 
@@ -52,7 +84,7 @@
 
 <div class="m-2 text-center hover:shadow-xl ">
        <img src="plant 2.jpg" width="250px " height="250px">
-        <h2> plant 2</h2>
+        <h2> plant </h2>
         <p> 4$</p>
 
 
@@ -65,7 +97,7 @@
 
 <div class="m-2 text-center hover:shadow-xl">
        <img src="lily 3.jpg" width="250px " height="250px">
-        <h2> lily </h2>
+        <h2> mini plant </h2>
         <p> 5$</p>
 
 
@@ -77,7 +109,7 @@
 
 <div class="m-2 text-center hover:shadow-xl">
        <img src="bonsai 4.jpg" width="250px " height="250px">
-        <h2> plant 4</h2>
+        <h2> bonsai</h2>
         <p> 7$</p>
 
 
@@ -103,7 +135,7 @@
         
        <img src="flower 1.jpg" width="250px " height="250px">
 
-        <h2> plant 6</h2>
+        <h2> tree</h2>
         <p> 5$</p>
 
 
@@ -117,7 +149,7 @@
 
 <div class="m-2 text-center hover:shadow-xl">
        <img src="5 rose.jpg " width="250px" height="">
-        <h2> plant 1</h2>
+        <h2> flower</h2>
         <p> 5$</p>
 
 
@@ -166,6 +198,101 @@
 <p class="p-5 m-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem consequatur provident porro mollitia? Assumenda consectetur vitae eum amet enim dicta asperiores suscipit cupiditate laudantium reprehenderit nisi quasi corporis quo esse praesentium, accusantium nam, alias unde. Ratione, nulla vitae modi adipisci eligendi ducimus odit obcaecati. Molestias aliquid maxime totam dolore nemo fugit pariatur, quibusdam necessitatibus, optio tempora ipsam nesciunt odit fugiat perspiciatis similique. Quae d</p>
 <p class="m-5 p-5">@Greenden.com </p>
 </div>
+
+
+
+
+<script src="product.js"></script>
+
+
+<script>
+
+var container =document.getElementById("container")
+var search = document.getElementById("search")
+var productList =container.querySelectorAll("div")
+
+search.addEventListener("keyup",function(){
+  var enterValue =event.target.value.toLowerCase()
+
+
+
+
+for(count=0;count<productList.length; count=count+1)
+
+{
+
+ var productname =productList[count].querySelector("h2").textContent
+
+
+  if(productname.toLowerCase().indexOf(enterValue)<0)
+
+       {
+
+             productList[count].style.display='none'
+
+       }
+
+       else{
+        productList[count].style.display='block'
+       }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+})
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
